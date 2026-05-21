@@ -3,12 +3,15 @@ const helmet = require("helmet");
 const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require("./routes/userRoutes");
+const metricsMiddleware = require("./middleware/metricsMiddleware");
+const { client } = require("./metrics");
 
 const app = express();
 
 app.use(helmet());
 app.use(logger);
 app.use(express.json());
+app.use(metricsMiddleware);
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -16,6 +19,11 @@ app.get("/health", (req, res) => {
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV,
   });
+});
+
+app.get("/metrics", async (req, res) => {
+  res.set("Content-Type", client.register.contentType);
+  res.end(await client.register.metrics());
 });
 
 app.use("/users", userRoutes);
