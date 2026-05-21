@@ -1,21 +1,12 @@
-const { Pool } = require("pg");
-const config = require("../config/env");
+let _pool = null;
 
-const pool = new Pool({
-  host: config.db.host,
-  port: config.db.port,
-  database: config.db.database,
-  user: config.db.user,
-  password: config.db.password,
-});
+const setPool = (pool) => {
+  _pool = pool;
+};
 
-pool.on("connect", () => {
-  console.log("Connected to PostgreSQL");
-});
+const getPool = () => {
+  if (!_pool) throw new Error("Database pool not initialized");
+  return _pool;
+};
 
-pool.on("error", (err) => {
-  console.error("PostgreSQL pool error:", err.message);
-  process.exit(1);
-});
-
-module.exports = pool;
+module.exports = { setPool, getPool };
