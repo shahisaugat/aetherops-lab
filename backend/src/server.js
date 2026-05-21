@@ -1,10 +1,13 @@
 const app = require("./app");
 const { loadSecrets } = require("./config/env");
 const { Pool } = require("pg");
+const { setPool } = require("./db/pool");
 
 const startServer = async () => {
   try {
     const config = await loadSecrets();
+
+    console.log("Secrets loaded. Connecting to database...");
 
     const pool = new Pool({
       host: config.db.host,
@@ -23,7 +26,7 @@ const startServer = async () => {
       process.exit(1);
     });
 
-    app.locals.pool = pool;
+    setPool(pool);
 
     const server = app.listen(config.port, () => {
       console.log(
@@ -42,7 +45,7 @@ const startServer = async () => {
 
     process.on("SIGTERM", () => shutdown("SIGTERM"));
     process.on("SIGINT", () => shutdown("SIGINT"));
-  } catch (e) {
+  } catch (err) {
     console.error("Failed to start server:", err.message);
     process.exit(1);
   }
