@@ -74,7 +74,7 @@ curl http://localhost:3000/health
 ```
 
 ## Grafana Dashboard and Metrics
-![Dashboard](./grfana.png)
+![Dashboard](./grafana.png)
 
 ---
 **Saugat Shahi**  
