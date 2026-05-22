@@ -8,11 +8,6 @@ This lab is a comprehensive showcase of modern platform engineering practices, i
 
 **Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
 
-## Author
-**Saugat Shahi**  
-*DevOps Engineer Intern*  
-GitHub: [@shahisaugat](https://github.com/shahisaugat)
-
 ## Platform Architecture
 The lab implements a robust, multi-layer secure architecture designed to guarantee reliable delivery, secure runtime, and rapid observability:
 ```
@@ -76,3 +71,8 @@ Check if the API is running correctly:
 ```bash
 curl http://localhost:3000/health
 ```
+
+
+**Saugat Shahi**  
+*DevOps Engineer Intern*  
+GitHub: [@shahisaugat](https://github.com/shahisaugat)
