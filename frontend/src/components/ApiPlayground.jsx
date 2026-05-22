@@ -26,6 +26,7 @@ export default function ApiPlayground({ baseUrl = "" }) {
   const responseRef = useRef(null);
 
   const needsBody = method === "POST" || method === "PUT";
+  const isEditable = ["get-user", "update-user", "delete-user"].includes(activePreset);
 
   useEffect(() => {
     if (responseRef.current && response) {
@@ -121,14 +122,36 @@ export default function ApiPlayground({ baseUrl = "" }) {
             {method}
           </div>
 
-          {/* Static premium endpoint label */}
-          <div className="flex h-9 min-w-0 flex-1 items-center rounded-md bg-slate-50 px-3.5 ring-1 ring-inset ring-slate-200">
-            <span className="hidden font-mono text-[13px] text-slate-400 sm:inline shrink-0">
-              {baseUrl || "https://aetherops.duckdns.org"}
-            </span>
-            <span className="font-mono text-[13px] font-semibold text-slate-800 sm:ml-0.5 truncate">
-              {path}
-            </span>
+          {/* Static / Editable premium endpoint label */}
+          <div className={`flex h-9 min-w-0 flex-1 items-center justify-between rounded-md px-3.5 ring-1 ring-inset transition-all duration-150 ${
+            isEditable 
+              ? "ring-slate-300 focus-within:ring-slate-500 focus-within:bg-white bg-slate-50/50" 
+              : "ring-slate-200 bg-slate-50 select-none"
+          }`}>
+            <div className="flex items-center min-w-0 flex-1">
+              <span className="hidden font-mono text-[13px] text-slate-400 sm:inline shrink-0">
+                {baseUrl || "https://aetherops.duckdns.org"}
+              </span>
+              {isEditable ? (
+                <input
+                  type="text"
+                  value={path}
+                  onChange={(e) => setPath(e.target.value)}
+                  onKeyDown={onKey}
+                  className="ml-0 sm:ml-0.5 w-full bg-transparent border-0 p-0 font-mono text-[13px] font-semibold text-slate-800 focus:outline-none focus:ring-0 focus:border-0 focus:shadow-none"
+                  placeholder="/users/1"
+                />
+              ) : (
+                <span className="font-mono text-[13px] font-semibold text-slate-800 sm:ml-0.5 truncate">
+                  {path}
+                </span>
+              )}
+            </div>
+            {isEditable && (
+              <svg className="h-3.5 w-3.5 shrink-0 text-slate-400 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
+            )}
           </div>
 
           <button
