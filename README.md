@@ -4,24 +4,24 @@
 
 ---
 
-## 🎯 Project Objective
+## Project Objective
 
 The **AetherOps Engineering Lab** is a production-grade playground designed to simulate and demonstrate how modern, highly scalable companies architect, secure, deploy, and monitor cloud-native applications. 
 
 This lab is a comprehensive showcase of modern platform engineering practices, integrating containerized environments, secure secrets loading, scalable orchestration, and granular observability.
 
-🔗 **Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
+**Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
 
 ---
 
 ## 👤 Author
 **Saugat Shahi**  
-*Platform & DevSecOps Engineer*  
+*DevOps Engineer Intern*  
 GitHub: [@shahisaugat](https://github.com/shahisaugat)
 
 ---
 
-## 🏗️ Platform Architecture
+## Platform Architecture
 
 The lab implements a robust, multi-layer secure architecture designed to guarantee reliable delivery, secure runtime, and rapid observability:
 
@@ -38,7 +38,7 @@ Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26
 
 ---
 
-## 🛠️ Technology Stack & Services
+## Technology Stack & Services
 
 | Component | Technology | Purpose & Implementation Details |
 | :--- | :--- | :--- |
@@ -52,7 +52,7 @@ Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26
 
 ---
 
-## 🚀 Getting Started & Local Development
+## Getting Started & Local Development
 
 ### Prerequisites
 - **Node.js (v20+)**
@@ -91,20 +91,3 @@ Check if the API is running correctly:
 ```bash
 curl http://localhost:3000/health
 ```
-
----
-
-## 📈 Engineering Evolution Roadmap
-
-| Phase | Milestone | Objective | Status |
-| :---: | :--- | :--- | :---: |
-| **0** | **Engineering Foundations** | Project initialization and structure setup. | **Complete** |
-| **1** | **Backend API** | Express controllers, CRUD services, and local connections. | **Complete** |
-| **2** | **Repository & Infra** | Git versioning, environment config, and clean folder structures. | **Complete** |
-| **3** | **Containerization** | Multi-stage Dockerfile and optimized Docker Compose configurations. | **Complete** |
-| **4** | **Continuous Integration** | Automated syntax checking, building, and security analysis. | **Complete** |
-| **5** | **Continuous Deployment** | Production-ready multi-platform deployments to VM hosts. | **Complete** |
-| **6** | **Reverse Proxy & HTTPS** | Implementing Nginx routing layers and SSL contexts. | **Complete** |
-| **7** | **Secrets Management** | Production-grade dynamic key retrieval via Azure Key Vault. | **Complete** |
-| **8** | **Monitoring & Metrics** | Prometheus scraping setup and dynamic health dashboard metrics. | **Complete** |
-| **9** | **Orchestration (K8s)** | Manifest architectures covering services, replicas, and self-healing. | **Complete** |
