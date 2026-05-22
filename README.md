@@ -1,34 +1,65 @@
 # AetherOps Engineering Lab
 
-A production-grade DevOps and Platform Engineering ecosystem built
-to simulate how modern cloud-native companies architect, deploy,
-and operate software at scale.
+### A high-fidelity DevSecOps and Platform Engineering sandbox for modern cloud-native systems.
 
-## Architecture
+---
 
-```java
-Internet → Nginx → Node.js API → PostgreSQL
+## 🎯 Project Objective
+
+The **AetherOps Engineering Lab** is a production-grade playground designed to simulate and demonstrate how modern, highly scalable companies architect, secure, deploy, and monitor cloud-native applications. 
+
+This lab is a comprehensive showcase of modern platform engineering practices, integrating containerized environments, secure secrets loading, scalable orchestration, and granular observability.
+
+🔗 **Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
+
+---
+
+## 👤 Author
+**Saugat Shahi**  
+*Platform & DevSecOps Engineer*  
+GitHub: [@shahisaugat](https://github.com/shahisaugat)
+
+---
+
+## 🏗️ Platform Architecture
+
+The lab implements a robust, multi-layer secure architecture designed to guarantee reliable delivery, secure runtime, and rapid observability:
+
+```
+Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26) ──► PostgreSQL
 ```
 
-## Services
+### Core Architecture Highlights
+- **Reverse Proxy**: Nginx handles incoming client requests and securely forwards traffic.
+- **REST Backend**: Express API manages core database controllers, handles user CRUD operations, and exposes endpoints under careful validation.
+- **Relational Storage**: PostgreSQL holds persistent records with automatic and idempotent database schema DDL migrations applied on deploy.
+- **Observability**: Exposes system metrics on `/metrics` scraped by Prometheus to feed live analytical data.
+- **Hardened Security**: Employs HTTP header security via Helmet, strict CORS controls, non-root Docker execution contexts, and zero hardcoded secrets.
 
-| Service    | Technology         | Purpose                        |
-| ---------- | ------------------ | ------------------------------ |
-| Backend    | Node.js + Express  | REST API, business logic       |
-| Database   | PostgreSQL         | Persistent data storage        |
-| Proxy      | Nginx              | Routing, TLS termination       |
-| CI/CD      | GitHub Actions     | Automated testing & deployment |
-| Monitoring | Prometheus/Grafana | Observability & alerting       |
+---
 
-## Local Development
+## 🛠️ Technology Stack & Services
+
+| Component | Technology | Purpose & Implementation Details |
+| :--- | :--- | :--- |
+| **Backend Service** | Node.js + Express 5 | Handles transactional CRUD controllers, Helmet headers, and Prometheus scrapes. |
+| **Database Engine** | PostgreSQL | Holds raw relational data. Scaled to use connection pools. |
+| **Proxy Layer** | Nginx | Manages internal port isolation, keeping port 3000 entirely private. |
+| **Orchestration** | Kubernetes | Declares ConfigMaps, Secrets, high-availability deployments (2 replicas), and readiness/liveness health probes. |
+| **Observability** | Prometheus / Grafana | Tracks request volume, response durations, and resource metrics dynamically. |
+| **Security Suite** | Azure Key Vault + MS Identity | Loads credentials dynamically at startup so no secrets reside in images or variables. |
+| **Deployment Engine**| GitHub Actions | Automated lint, build, test, multi-arch package uploads to GHCR, and VM SSH redeploys. |
+
+---
+
+## 🚀 Getting Started & Local Development
 
 ### Prerequisites
+- **Node.js (v20+)**
+- **Docker & Docker Compose**
 
-- Node.js 18+
-- Docker
-
-### Run the database
-
+### 1. Set Up the Relational Database
+Start a local, isolated PostgreSQL container:
 ```bash
 docker run --name aetherops-postgres \
   -e POSTGRES_USER=postgres \
@@ -38,31 +69,42 @@ docker run --name aetherops-postgres \
   -d postgres:15
 ```
 
-### Run the API
-
+### 2. Configure & Run Backend API
+Navigate to the backend directory, configure the environment, and spin up the development server:
 ```bash
 cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
+
+### 3. Configure & Run Frontend Documentation
+In a separate terminal, launch the premium frontend UI:
+```bash
+cd frontend
 npm install
 npm run dev
 ```
 
-### Health check
-
+### 4. Verify System Health
+Check if the API is running correctly:
 ```bash
 curl http://localhost:3000/health
 ```
 
-## Phases
+---
 
-| Phase | Description                 | Status      |
-| ----- | --------------------------- | ----------- |
-| 0     | Engineering foundations     | Complete    |
-| 1     | Backend API                 | Complete    |
-| 2     | Repository & infrastructure | In Progress |
-| 3     | Containerization            | Pending     |
-| 4     | Continuous Integration      | Pending     |
-| 5     | Continuous Deployment       | Pending     |
-| 6     | Reverse proxy & HTTPS       | Pending     |
-| 7     | Secrets management          | Pending     |
-| 8     | Monitoring & observability  | Pending     |
-| 9     | Kubernetes                  | Pending     |
+## 📈 Engineering Evolution Roadmap
+
+| Phase | Milestone | Objective | Status |
+| :---: | :--- | :--- | :---: |
+| **0** | **Engineering Foundations** | Project initialization and structure setup. | **Complete** |
+| **1** | **Backend API** | Express controllers, CRUD services, and local connections. | **Complete** |
+| **2** | **Repository & Infra** | Git versioning, environment config, and clean folder structures. | **Complete** |
+| **3** | **Containerization** | Multi-stage Dockerfile and optimized Docker Compose configurations. | **Complete** |
+| **4** | **Continuous Integration** | Automated syntax checking, building, and security analysis. | **Complete** |
+| **5** | **Continuous Deployment** | Production-ready multi-platform deployments to VM hosts. | **Complete** |
+| **6** | **Reverse Proxy & HTTPS** | Implementing Nginx routing layers and SSL contexts. | **Complete** |
+| **7** | **Secrets Management** | Production-grade dynamic key retrieval via Azure Key Vault. | **Complete** |
+| **8** | **Monitoring & Metrics** | Prometheus scraping setup and dynamic health dashboard metrics. | **Complete** |
+| **9** | **Orchestration (K8s)** | Manifest architectures covering services, replicas, and self-healing. | **Complete** |
