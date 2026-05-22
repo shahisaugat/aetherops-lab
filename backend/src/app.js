@@ -1,5 +1,6 @@
 const express = require("express");
 const helmet = require("helmet");
+const cors = require("cors");
 const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require("./routes/userRoutes");
@@ -8,7 +9,10 @@ const { client } = require("./metrics");
 
 const app = express();
 
-app.use(helmet());
+app.use(cors());
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));
 app.use(logger);
 app.use(express.json());
 app.use(metricsMiddleware);
