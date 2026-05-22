@@ -1,13 +1,12 @@
 # AetherOps Engineering Lab
 ### A high-fidelity DevSecOps and Platform Engineering sandbox for modern cloud-native systems.
----
 ## Project Objective
 The **AetherOps Engineering Lab** is a production-grade playground designed to simulate and demonstrate how modern, highly scalable companies architect, secure, deploy, and monitor cloud-native applications. 
 
 This lab is a comprehensive showcase of modern platform engineering practices, integrating containerized environments, secure secrets loading, scalable orchestration, and granular observability.
-
+---
 **Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
-
+---
 ## Platform Architecture
 The lab implements a robust, multi-layer secure architecture designed to guarantee reliable delivery, secure runtime, and rapid observability:
 ```
