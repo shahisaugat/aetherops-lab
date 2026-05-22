@@ -71,8 +71,7 @@ Check if the API is running correctly:
 ```bash
 curl http://localhost:3000/health
 ```
-
-
+---
 **Saugat Shahi**  
 *DevOps Engineer Intern*  
 GitHub: [@shahisaugat](https://github.com/shahisaugat)
