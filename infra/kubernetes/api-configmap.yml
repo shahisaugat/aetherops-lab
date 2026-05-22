@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aetherops-config
+data:
+  NODE_ENV: "production"
+  USE_KEY_VAULT: "false"
+  DB_HOST: "aetherops-postgres"
+  DB_PORT: "5432"
+  DB_NAME: "aetherops"

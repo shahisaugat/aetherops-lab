@@ -19,9 +19,11 @@ spec:
         image: ghcr.io/shahisaugat/aetherops-api:latest
         ports:
         - containerPort: 3000
-        env:
-        - name: NODE_ENV
-          value: "production"
+        envFrom:
+        - configMapRef:
+            name: aetherops-config
+        - secretRef:
+            name: aetherops-secret
         readinessProbe:
           httpGet:
             path: /health
