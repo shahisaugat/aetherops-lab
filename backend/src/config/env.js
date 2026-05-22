@@ -2,16 +2,15 @@ require("dotenv").config();
 const { SecretClient } = require("@azure/keyvault-secrets");
 const { DefaultAzureCredential } = require("@azure/identity");
 
-const isProduction = process.env.NODE_ENV === "production";
-
 const loadSecrets = async () => {
-  if (isProduction) {
-    console.log("Loading secrets from Azure Key Vault...");
+  const isProduction = process.env.NODE_ENV === "production";
+  const useKeyVault = process.env.USE_KEY_VAULT === "true";
 
+  if (isProduction && useKeyVault) {
+    console.log("Loading secrets from Azure Key Vault...");
     const vaultUrl = "https://aetherops-kv.vault.azure.net";
     const credential = new DefaultAzureCredential();
     const client = new SecretClient(vaultUrl, credential);
-
     const secretNames = [
       "DB-HOST",
       "DB-PORT",
@@ -26,7 +25,6 @@ const loadSecrets = async () => {
       const secret = await client.getSecret(name);
       secrets[name] = secret.value;
     }
-
     return {
       port: secrets["PORT"] || 3000,
       nodeEnv: secrets["NODE-ENV"] || "production",
@@ -40,6 +38,7 @@ const loadSecrets = async () => {
     };
   }
 
+  console.log("Loading secrets from environment variables...");
   const required = [
     "PORT",
     "DB_HOST",
@@ -48,14 +47,12 @@ const loadSecrets = async () => {
     "DB_USER",
     "DB_PASSWORD",
   ];
-
   required.forEach((key) => {
     if (!process.env[key]) {
       console.error(`Missing required environment variable: ${key}`);
       process.exit(1);
     }
   });
-
   return {
     port: process.env.PORT || 3000,
     nodeEnv: process.env.NODE_ENV || "development",
@@ -69,6 +66,4 @@ const loadSecrets = async () => {
   };
 };
 
-module.exports = {
-  loadSecrets,
-};
+module.exports = { loadSecrets };
