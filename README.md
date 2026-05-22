@@ -2,7 +2,6 @@
 
 ### A high-fidelity DevSecOps and Platform Engineering sandbox for modern cloud-native systems.
 
----
 
 ## Project Objective
 
@@ -12,14 +11,14 @@ This lab is a comprehensive showcase of modern platform engineering practices, i
 
 **Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
 
----
 
-## 👤 Author
+## Author
 **Saugat Shahi**  
 *DevOps Engineer Intern*  
 GitHub: [@shahisaugat](https://github.com/shahisaugat)
 
 ---
+
 
 ## Platform Architecture
 
@@ -29,6 +28,7 @@ The lab implements a robust, multi-layer secure architecture designed to guarant
 Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26) ──► PostgreSQL
 ```
 
+
 ### Core Architecture Highlights
 - **Reverse Proxy**: Nginx handles incoming client requests and securely forwards traffic.
 - **REST Backend**: Express API manages core database controllers, handles user CRUD operations, and exposes endpoints under careful validation.
@@ -36,7 +36,6 @@ Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26
 - **Observability**: Exposes system metrics on `/metrics` scraped by Prometheus to feed live analytical data.
 - **Hardened Security**: Employs HTTP header security via Helmet, strict CORS controls, non-root Docker execution contexts, and zero hardcoded secrets.
 
----
 
 ## Technology Stack & Services
 
@@ -50,7 +49,6 @@ Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26
 | **Security Suite** | Azure Key Vault + MS Identity | Loads credentials dynamically at startup so no secrets reside in images or variables. |
 | **Deployment Engine**| GitHub Actions | Automated lint, build, test, multi-arch package uploads to GHCR, and VM SSH redeploys. |
 
----
 
 ## Getting Started & Local Development
 
