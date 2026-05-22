@@ -1,33 +1,23 @@
 # AetherOps Engineering Lab
-
 ### A high-fidelity DevSecOps and Platform Engineering sandbox for modern cloud-native systems.
 
-
 ## Project Objective
-
 The **AetherOps Engineering Lab** is a production-grade playground designed to simulate and demonstrate how modern, highly scalable companies architect, secure, deploy, and monitor cloud-native applications. 
 
 This lab is a comprehensive showcase of modern platform engineering practices, integrating containerized environments, secure secrets loading, scalable orchestration, and granular observability.
 
 **Live Documentation & Dashboard**: [https://aetherops-lab.vercel.app/](https://aetherops-lab.vercel.app/)
 
-
 ## Author
 **Saugat Shahi**  
 *DevOps Engineer Intern*  
 GitHub: [@shahisaugat](https://github.com/shahisaugat)
 
----
-
-
 ## Platform Architecture
-
 The lab implements a robust, multi-layer secure architecture designed to guarantee reliable delivery, secure runtime, and rapid observability:
-
 ```
 Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26) ──► PostgreSQL
 ```
-
 
 ### Core Architecture Highlights
 - **Reverse Proxy**: Nginx handles incoming client requests and securely forwards traffic.
@@ -36,9 +26,7 @@ Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26
 - **Observability**: Exposes system metrics on `/metrics` scraped by Prometheus to feed live analytical data.
 - **Hardened Security**: Employs HTTP header security via Helmet, strict CORS controls, non-root Docker execution contexts, and zero hardcoded secrets.
 
-
 ## Technology Stack & Services
-
 | Component | Technology | Purpose & Implementation Details |
 | :--- | :--- | :--- |
 | **Backend Service** | Node.js + Express 5 | Handles transactional CRUD controllers, Helmet headers, and Prometheus scrapes. |
@@ -48,7 +36,6 @@ Internet ──► Nginx (Reverse Proxy / TLS) ──► Express API (Node.js 26
 | **Observability** | Prometheus / Grafana | Tracks request volume, response durations, and resource metrics dynamically. |
 | **Security Suite** | Azure Key Vault + MS Identity | Loads credentials dynamically at startup so no secrets reside in images or variables. |
 | **Deployment Engine**| GitHub Actions | Automated lint, build, test, multi-arch package uploads to GHCR, and VM SSH redeploys. |
-
 
 ## Getting Started & Local Development
 
