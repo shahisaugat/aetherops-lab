@@ -9,7 +9,7 @@ Welcome to the AetherOps Lab! This project consists of a React frontend, a Node.
 
 ---
 
-## 🚀 Setting Up the Project
+## Setting Up the Project
 
 ### 1. Backend Setup
 The backend is an Express API that connects to a PostgreSQL database.
@@ -52,7 +52,7 @@ The frontend is built using React and Vite.
 
 ---
 
-## 🐳 Running with Docker Containers
+## Running with Docker Containers
 
 You can run the entire backend and database stack using Docker Compose. This ensures a clean and reproducible environment.
 
@@ -74,7 +74,7 @@ You can run the entire backend and database stack using Docker Compose. This ens
 
 ---
 
-## ☸️ Setting Up Minikube and Kubernetes
+## Setting Up Minikube and Kubernetes
 
 For testing deployment in a Kubernetes-like environment, we provide manifests.
 
@@ -103,7 +103,7 @@ For testing deployment in a Kubernetes-like environment, we provide manifests.
 
 ---
 
-## 📊 Metrics and Prometheus
+## Metrics and Prometheus
 
 The backend is instrumented with `prom-client` and exposes system and application metrics automatically.
 
