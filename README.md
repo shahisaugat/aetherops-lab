@@ -72,6 +72,10 @@ Check if the API is running correctly:
 ```bash
 curl http://localhost:3000/health
 ```
+
+## Grafana Dashboard and Metrics
+![Dashboard](./grfana.png)
+
 ---
 **Saugat Shahi**  
 *DevOps Engineer Intern*  
